@@ -114,7 +114,7 @@ html[data-theme="light"] {
   --color-components-toggle-knob: #FFFFFF;
   --color-components-toggle-knob-disabled: #FFFFFFF2;
   --color-components-toggle-bg: #000000;
-  --color-components-toggle-bg-hover: #004AEB;
+  --color-components-toggle-bg-hover: #000000;
   --color-components-toggle-bg-disabled: #D1E0FF;
   --color-components-toggle-bg-unchecked: #E9EBF0;
   --color-components-toggle-bg-unchecked-hover: #D0D5DC;
