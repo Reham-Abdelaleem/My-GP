@@ -25,7 +25,7 @@ html[data-theme="light"] {
   --color-components-button-primary-border: #10182800;
   --color-components-button-primary-bg-hover: #4984bb;
   --color-components-button-primary-border-hover: #10182814;
-  --color-components-button-primary-bg-disabled: #155aef15;
+  --color-components-button-primary-bg-disabled: #d0d5dd;
   --color-components-button-primary-border-disabled: #FFFFFF00;
   --color-components-button-primary-text-disabled: #FFFFFF99;
 
