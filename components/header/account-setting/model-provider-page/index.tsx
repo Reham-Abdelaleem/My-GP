@@ -35,11 +35,20 @@ const ModelProviderPage = () => {
   const { modelProviders: providers } = useProviderContext()
   const setShowModelModal = useModalContextSelector(state => state.setShowModelModal)
   const defaultModelNotConfigured = !textGenerationDefaultModel && !embeddingsDefaultModel && !speech2textDefaultModel && !rerankDefaultModel && !ttsDefaultModel
+
+  // Add list of providers to hide
+  const hiddenProviders = ['topstage', 'groqcloud'] // Add provider names you want to hide
+
   const [configuredProviders, notConfiguredProviders] = useMemo(() => {
     const configuredProviders: ModelProvider[] = []
     const notConfiguredProviders: ModelProvider[] = []
 
     providers.forEach((provider) => {
+      // Skip hidden providers
+      if (hiddenProviders.includes(provider.provider)) {
+        return
+      }
+
       if (
         provider.custom_configuration.status === CustomConfigurationStatusEnum.active
         || (
@@ -92,14 +101,12 @@ const ModelProviderPage = () => {
     <div className='relative pt-1 -mt-2'>
       <div className={`flex items-center justify-between mb-2 h-8 ${defaultModelNotConfigured && 'px-3 bg-[#FFFAEB] rounded-lg border border-[#FEF0C7]'}`}>
         {
-          defaultModelNotConfigured
-            ? (
-              <div className='flex items-center text-xs font-medium text-gray-700'>
-                <AlertTriangle className='mr-1 w-3 h-3 text-[#F79009]' />
-                {t('common.modelProvider.notConfigured')}
-              </div>
-            )
-            : <div className='text-sm font-medium text-gray-800'>{t('common.modelProvider.models')}</div>
+          defaultModelNotConfigured && (
+            <div className='flex items-center text-xs font-medium text-gray-700'>
+              <AlertTriangle className='mr-1 w-3 h-3 text-[#F79009]' />
+              {t('common.modelProvider.notConfigured')}
+            </div>
+          )
         }
         <SystemModelSelector
           textGenerationDefaultModel={textGenerationDefaultModel}
