@@ -99,22 +99,25 @@ const ModelProviderPage = () => {
 
   return (
     <div className='relative pt-1 -mt-2'>
-      <div className={`flex items-center justify-between mb-2 h-8 ${defaultModelNotConfigured && 'px-3 bg-[#FFFAEB] rounded-lg border border-[#FEF0C7]'}`}>
+      <div className='flex items-center justify-between mb-2 h-8'>
         {
           defaultModelNotConfigured && (
-            <div className='flex items-center text-xs font-medium text-gray-700'>
+            <div className='flex items-center px-3 bg-[#FFFAEB] rounded-lg border border-[#FEF0C7] text-xs font-medium text-gray-700'>
               <AlertTriangle className='mr-1 w-3 h-3 text-[#F79009]' />
               {t('common.modelProvider.notConfigured')}
             </div>
           )
         }
-        <SystemModelSelector
-          textGenerationDefaultModel={textGenerationDefaultModel}
-          embeddingsDefaultModel={embeddingsDefaultModel}
-          rerankDefaultModel={rerankDefaultModel}
-          speech2textDefaultModel={speech2textDefaultModel}
-          ttsDefaultModel={ttsDefaultModel}
-        />
+        <div className='flex-1'></div>
+        <div style={{ transform: 'scale(1.22)' }}>
+          <SystemModelSelector
+            textGenerationDefaultModel={textGenerationDefaultModel}
+            embeddingsDefaultModel={embeddingsDefaultModel}
+            rerankDefaultModel={rerankDefaultModel}
+            speech2textDefaultModel={speech2textDefaultModel}
+            ttsDefaultModel={ttsDefaultModel}
+          />
+        </div>
       </div>
       {
         !!configuredProviders?.length && (
